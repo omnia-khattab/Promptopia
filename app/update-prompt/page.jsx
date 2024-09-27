@@ -4,7 +4,7 @@ import { useEffect, useState} from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 
-function EditPrompt() {
+function UpdatePrompt() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const promptId = searchParams.get("id");
@@ -29,7 +29,7 @@ function EditPrompt() {
         if(promptId) getPromptDetails();
     },[promptId]);
     
-    const updatePrompt = async (e) => {
+    const editPrompt = async (e) => {
         e.preventDefault();
         setSubmitting(true);
         if(!promptId) return alert('Prompt ID not found');
@@ -56,7 +56,7 @@ function EditPrompt() {
         post={post}
         setPost={setPost}
         submitting={submitting}
-        handleSubmit={updatePrompt}
+        handleSubmit={editPrompt}
 
     />
 
@@ -64,4 +64,4 @@ function EditPrompt() {
   )
 }
 
-export default EditPrompt
+export default UpdatePrompt
