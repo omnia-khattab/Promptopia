@@ -1,13 +1,13 @@
 'use client';
 
 import { useEffect, useState} from "react";
-import { useRouter,useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 
 function EditPrompt() {
     const router = useRouter();
-    const searchParams=useSearchParams();
-    const promptId= searchParams.get('id');
+    const searchParams = useSearchParams();
+    const promptId = searchParams.get("id");
 
     const [submitting, setSubmitting] = useState(false);
     const [post, setPost] = useState({
@@ -29,7 +29,7 @@ function EditPrompt() {
         if(promptId) getPromptDetails();
     },[promptId]);
     
-    const UpdatePrompt = async (e) => {
+    const updatePrompt = async (e) => {
         e.preventDefault();
         setSubmitting(true);
         if(!promptId) return alert('Prompt ID not found');
@@ -56,7 +56,7 @@ function EditPrompt() {
         post={post}
         setPost={setPost}
         submitting={submitting}
-        handleSubmit={UpdatePrompt}
+        handleSubmit={updatePrompt}
 
     />
 
